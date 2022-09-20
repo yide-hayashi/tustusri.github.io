@@ -1,101 +1,97 @@
 
 <section class="page-section bg-light" id="portfolio">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Portfolio</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 1-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Threads</div>
-                                <div class="portfolio-caption-subheading text-muted">Illustration</div>
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">{{$protfolioData==""? "":$protfolioData[0]->ProtfolioText}}
+            @if ($manager==true)
+            <a class=" "  data-bs-toggle="modal" href="{{'#'.$PopNameTag[2]}}">
+                <i class="fa fa-cog"></i>
+            </a>
+            @endif
+            </h2>
+            <h3 class="section-subheading text-muted">{{$protfolioData==""? "":$protfolioData[0]->ProtfolioSub}}</h3>
+        </div>
+        <form method="post" action="" id="delProject_ajax_form">
+            {!! csrf_field() !!}
+            {{ method_field('delete') }}
+            <div class="row">
+                @for ($i=0;$i<=count($protfolioPojectsData) ;$i++)
+                <div class="col-lg-4 col-sm-6 mb-4">
+                    <!-- Portfolio item 1-->
+                    <div class="portfolio-item">
+                        @if ($i==count($protfolioPojectsData))
+                        <a class="portfolio-link" data-bs-toggle="" href="/managerpage/createProject">
+                        <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
+                            <img class="img-fluid" src="/assets/img/addimg.jpg" alt="..." />
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading">新增</div>
+                            <div class="portfolio-caption-subheading text-muted"></div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 2-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/2.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Explore</div>
-                                <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
+                        @else
+                        
+                        <button type="button" class="btn-close" onclick="del({{$i}})" aria-label="Close"></button>
+                        <a class="portfolio-link" data-bs-toggle="" href="/managerpage/UpdateProject?sname={{$protfolioPojectsData[$i]->PopupName}}">
+                        <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
+                            <img class="img-fluid" src="{{$protfolioPojectsData[$i]->ProtfolioContentImg}}" alt="..." />
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading">{{$protfolioPojectsData[$i]->PopupName}}</div>
+                            <div class="portfolio-caption-subheading text-muted">{{$protfolioPojectsData[$i]->PopupSubtext}}</div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 3-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Finish</div>
-                                <div class="portfolio-caption-subheading text-muted">Identity</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
-                        <!-- Portfolio item 4-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/4.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Lines</div>
-                                <div class="portfolio-caption-subheading text-muted">Branding</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
-                        <!-- Portfolio item 5-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/5.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Southwest</div>
-                                <div class="portfolio-caption-subheading text-muted">Website Design</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <!-- Portfolio item 6-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/6.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Window</div>
-                                <div class="portfolio-caption-subheading text-muted">Photography</div>
-                            </div>
-                        </div>
+                        @endif
+
                     </div>
                 </div>
+                @endfor
             </div>
-        </section>
+        </form>
+    </div>
+</section>
+<script>
+ function del($index)
+ {
+    $projectname=$(".portfolio-caption-heading").eq($index).text();
+
+
+$form = $(this)
+
+$.ajax({
+  url: "managerpage/del/"+$projectname,
+  type: 'delete',
+  data: $index,
+  headers: {
+  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  },
+  success: function (response) {
+    
+      $('.error').remove();
+      console.log(response)
+      if(response.error){
+          
+          $.each(response.errors, function(name, error){
+              error = '<small class="text-muted error">' + error + '</small>'
+              $form.find('[name=' + name + ']').after(error);
+          })
+      }
+      else{
+          console.log(response.errors)
+          if(response.errors=="")
+          {
+            location.href = '/managerpage'
+          }
+      }
+  },
+  cache: false,
+  contentType: false,
+  processData: false
+  });
+}
+
+
+  </script>
+        @includeIf("base.PortfolioPopup")

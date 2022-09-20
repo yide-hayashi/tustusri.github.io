@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Home;
+
 use Illuminate\Support\Facades\Storage;
 class HomePageController extends Controller
 {
@@ -64,7 +65,7 @@ class HomePageController extends Controller
         return redirect("/managerpage");
     }
 
-    public function updateImg(Request $request, $id)
+    public function updateImg(Request $request)
     {
         $request->input("fileToUpload");
         Storage::put("/img/".$request->file('fileToUpload')->getClientOriginalName(),

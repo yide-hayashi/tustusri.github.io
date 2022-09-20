@@ -9,12 +9,16 @@ class ProtfolioContent extends Model
 {
     use HasFactory,softDeletes;
     protected $datas=["deleted_at"];
-    protected $table="ProtfolioContent";
+    protected $table="ProtfolioContents";
     protected $promaryKey="ProtfolioContentID";
+    protected $save=[
+
+        "ProtfolioProjectName",
+    ];
 
     protected $fillable=[
+        "Pid",
         "ProtfolioContentImg",
-        "ProtfolioProjectName",
         "ProtfolioProjectContent",
         "PopupImg",
         "PopupName",

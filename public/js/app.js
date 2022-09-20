@@ -2477,6 +2477,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scripts__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_scripts__WEBPACK_IMPORTED_MODULE_1__);
 
 
+$(document).ready(function () {
+  $('#imgPreviewToUpload').change(function () {
+    var file = this.files[0];
+    $form = $(this);
+    console.log(file);
+
+    if (file) {
+      var reader = new FileReader();
+
+      reader.onload = function (event) {
+        console.log(event.target.result);
+        $('#imgPreview').attr('src', event.target.result);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  });
+});
 
 /***/ }),
 

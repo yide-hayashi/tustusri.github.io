@@ -15,7 +15,24 @@ use Illuminate\Support\Facades\DB;
 
 Route::get('/',"index@indexPage");
 
-Route::get('/managerpage',"ManagePage@manageIndex");
-Route::post("/managerpage/{id}","Api\HomePageController@updateImg");
-Route::put("/managerpage/{id}","Api\HomePageController@update");
+Route::post("/managerpage/upload","Api\HomePageController@updateImg");
+Route::put("/{id}/managerpage","Api\HomePageController@update");
+Route::group(["prefix"=>"managerpage"],function()
+{
+    Route::get('/',"ManagePage@manageIndex");
+
+
+
+    Route::put("/store","Api\protfolio@store");
+    Route::post("/create","Api\protfolio@create");
+
+    Route::put("/storeContent","Api\protfolio@storeContent");
+    Route::post("/createContent","Api\protfolio@createContentPage");
+    Route::delete("/del/{pjn}","Api\protfolio@destroy");
+
+    Route::get('/UpdateProject',"Api\protfolio@show");
+    Route::get('/createProject',"Api\protfolio@creatshow");
+});
+
+
 

@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    protected $table="Category";
+    protected $table="Categories";
     protected $promaryKey="CategoryID";
 
     protected $fillable=[
-        "PopupCategory"
+        "PopupCategory",
+        "ProtfolioContentID"
     ];
     public function ProtfolioContentID()
     {

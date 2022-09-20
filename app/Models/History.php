@@ -4,16 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\softDeletes;
 class History extends Model
 {
-    use HasFactory,softDeletes;
-    protected $table="History";
+    use HasFactory;
+    protected $table="Histories";
     protected $promaryKey="HistoryID";
     protected $fillable=[
         "Startyear",
         "Endyear",
-        "PageText",
         "ContentTitle",
         "ContentSub",
         "img"

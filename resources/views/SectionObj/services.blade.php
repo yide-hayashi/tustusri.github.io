@@ -1,6 +1,6 @@
 
 
-@section("services")
+
 <section class="page-section" id="services">
             <div class="container">
                 <div class="text-center">
@@ -35,4 +35,3 @@
                 </div>
             </div>
         </section>
-@endsection

@@ -13,6 +13,7 @@ class Protfolio extends Model
     protected $promaryKey="ProtfolioID";
 
     protected $fillable=[
+        "Pid",
         "ProtfolioText",
         "ProtfolioSub"
     ];

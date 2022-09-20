@@ -9,9 +9,10 @@ use Illuminate\Database\Eloquent\softDeletes;
 class Contanct extends Model
 {
     use HasFactory,softDeletes;
-    protected $table="Contanct";
+    protected $table="Contancts";
     protected $promaryKey="ContanctID";
     protected $fillable=[
+        "Pid",
         "img",
         "ContanctTitle",
         "ContanctText"
