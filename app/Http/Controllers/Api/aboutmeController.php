@@ -39,7 +39,7 @@ class aboutmeController extends Controller
     public function create(Request $request)
     {
         $input = $request->all();
-        
+       
         $rules = [
             'Startyear' => [
                 'min:1901',
@@ -77,18 +77,18 @@ class aboutmeController extends Controller
             file_get_contents($request->file('fileToUpload')));
             $imgpath="/img/aboutme/".$request->file('fileToUpload')->getClientOriginalName();
         }
-
+        $ContentSub=($request->ContentSub==null? "":$request->ContentSub);
         History::create([
             "Pid"=>"3",
             "Startyear"=>(int)$request->Startyear,
             "Endyear"=>(int)$request->Endyear,
             "ContentTitle"=>$request->ContentTitle,
-            "ContentSub"=>$request->ContentSub,
+            "ContentSub"=>$ContentSub,
             "img"=>$imgpath
             
         ]);
         return redirect("/managerpage");
-        //
+        
     }
     /**
      * Display the specified resource.

@@ -10,17 +10,19 @@
    $('#id_ajax_formT').submit(function(e){
       e.preventDefault();
       $form = $(this);
-      var formData = new FormData(this);
+       var formData = new FormData(this);
+       
+    var Data = [];
       var i=0;
       
       
       for(i=0;i<$("#categoryTextLineList").children().length ;i++)
       {
-          formData.append('categoryname['+i+']' ,$("#categoryTextLineList").children().eq(i).text());
+        formData.append('categoryname['+i+']' ,$("#categoryTextLineList").children().eq(i).text());
       }
       formData.append('ProtfolioContentID' ,$("#ProtfolioContentID").text());
       $.ajax({
-        url: "/managerpage/storeContent/",
+        url: "/managerpage/storeContent",
         type: 'POST',
         data: formData,
         headers: {
@@ -139,7 +141,8 @@
             console.log(response.errors)
             if(response.errors=="")
             {
-                $(".timeline").children().eq($index).remove()
+                $(".timeline").children().eq($index).remove();
+                sortAboutmetag();
                // location.href = '/managerpage'
             }
         }
@@ -148,4 +151,13 @@
     contentType: false,
     processData: false
     });
+}
+
+function sortAboutmetag()
+{
+    for($i=0;$i<$(".btn-close.aboutmebut").length;$i++)
+    {
+        $(".btn-close.aboutmebut").eq($i).attr("onclick","delAboutme("+$i+")");
+    }
+    
 }

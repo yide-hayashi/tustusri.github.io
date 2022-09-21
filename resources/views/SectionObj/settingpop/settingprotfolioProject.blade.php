@@ -19,7 +19,7 @@
                             <!-- Project details-->
                             <form action="/managerpage/storeContent" enctype="multipart/form-data" id="id_ajax_formT" method="post" >
                             {!! csrf_field() !!}
-                            {{ method_field('put') }}
+                            {{ method_field('PUT') }}
                                 <input class="managerpage-PojectPopup-ContentTitle " type="text" name="PopupName" value="{{old('PopupName')==''? $protfolioData->PopupName:old('PopupName') }}">
                                 <div id="ProtfolioContentID" style="display: none">{{$protfolioData->ProtfolioContentID}}</div>
                                 <br>

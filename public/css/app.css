@@ -110,6 +110,10 @@
   }
   @media  (min-width: 1200px) /*1200以上*/
   {
+    .aboutImg-normal
+    {
+        
+    }
     .aboutImg
     {
         position: relative;

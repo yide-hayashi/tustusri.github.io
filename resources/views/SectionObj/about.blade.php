@@ -33,7 +33,7 @@
                     </div>
                 <div class="timeline-panel">
                 @if ($manager==true)
-                <button type="button" class="btn-close" onclick="delAboutme({{$i}})" aria-label="Close"></button>
+                <button type="button" class="btn-close aboutmebut" onclick="delAboutme({{$i}})" aria-label="Close"></button>
                 @endif 
                     <div class="timeline-heading">
                         <h4>{{$HistoryDate[$i]->Startyear}}-{{$HistoryDate[$i]->Endyear}}</h4>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="timeline-panel">
                 @if ($manager==true)
-                <button type="button" class="btn-close" onclick="delAboutme({{$i}})" aria-label="Close"></button>
+                <button type="button" class="btn-close aboutmebut" onclick="delAboutme({{$i}})" aria-label="Close"></button>
                 @endif 
                     <div class="timeline-heading">
                         <h4>{{$HistoryDate[$i]->Startyear}}-{{$HistoryDate[$i]->Endyear}}</h4>

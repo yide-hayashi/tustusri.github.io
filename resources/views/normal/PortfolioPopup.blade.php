@@ -17,6 +17,9 @@
                                     <p></p>
                                     <ul class="list-inline">
                                         <li>
+                                            <p>{{$protfolioPojectsData[$i]->PopupContent}}</p>
+                                        </li>
+                                        <li>
                                             <strong>link:</strong>
                                             <a href="{{$protfolioPojectsData[$i]->PopupLink}}">{{$protfolioPojectsData[$i]->PopupLink}}</a>
                                         </li>
