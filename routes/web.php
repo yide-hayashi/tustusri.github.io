@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Api;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +33,17 @@ Route::group(["prefix"=>"managerpage"],function()
 
     Route::get('/UpdateProject',"Api\protfolio@show");
     Route::get('/createProject',"Api\protfolio@creatshow");
+
+    Route::put("/aboutme/update","Api\aboutmeController@update");
+    Route::get("/aboutme","Api\aboutmeController@showAboutMeContent");
+
+    Route::post("/aboutme/create","Api\aboutmeController@create");
+    Route::put("/aboutme/updateHistory/{id}","Api\aboutmeController@updateHistory");
+    Route::get("/aboutme/showAboutMeBeUpdatedContent/{id}","Api\aboutmeController@showAboutMeBeUpdatedContent");
+    Route::delete("/aboutme/del/{id}","Api\aboutmeController@destroy");
+
+    Route::get("/Contact/show","Api\contactController@show");
+    Route::put("/Contact/update","Api\contactController@update");
 });
 
 

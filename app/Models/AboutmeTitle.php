@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\softDeletes;
 
 class AboutmeTitle extends Model
 {
-    use HasFactory,softDeletes;
+    use HasFactory;
     protected $table="AboutmeTitle";
     protected $promaryKey="Pid";
     protected $fillable=[

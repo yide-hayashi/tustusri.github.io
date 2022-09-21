@@ -14,7 +14,8 @@ class History extends Model
         "Endyear",
         "ContentTitle",
         "ContentSub",
-        "img"
+        "img",
+        "Pid"
     ];
     public function Pid()
     {

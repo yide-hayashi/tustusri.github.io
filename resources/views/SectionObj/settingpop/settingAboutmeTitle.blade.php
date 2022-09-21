@@ -9,21 +9,21 @@
                         <div class="modal-body">
                             <!-- Project details-->
                             <h2 class="text-uppercase">{{$SettingName}}</h2>
-                            <form action="/managerpage/store" method="post" >
+                            <form action="/managerpage/aboutme/update" method="post" >
                                 {!! csrf_field() !!}
                                 {{ method_field('put') }}
                                 <ul class="list-inline">
                                     <li>
                                             
-                                            <ul class="list-group">
+                                        <ul class="list-group">
                                             <li class="list-group-item" aria-current="true">
                                                 <div>標題:
-                                                    <input class="managerpage-Popup-ContentTitle" type="text" name="ProtfolioText" value="{{$AboutmeData==''? '':$AboutmeData[0]->PageTitle}}">
+                                                    <input class="managerpage-Popup-ContentTitle" type="text" name="AboutmeTitle" value="{{$AboutmeData==''? '':$AboutmeData[0]->PageTitle}}">
                                                 </div>
                                             </li>
                                             <li class="list-group-item">
                                                 <div>副標題:
-                                                    <input class="managerpage-Popup-ContentTitle" type="text" name="ProtfolioSub" value="{{$AboutmeData==''? '':$AboutmeData[0]->PageSubtext}}">
+                                                    <input class="managerpage-Popup-ContentTitle" type="text" name="AboutmeSub" value="{{$AboutmeData==''? '':$AboutmeData[0]->PageSubtext}}">
                                                 </div>                   
                                             </li>
                                         </ul> 
@@ -49,3 +49,5 @@
         </div>
     </div>
 </div>
+<script>
+</script>

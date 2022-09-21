@@ -2480,7 +2480,6 @@ __webpack_require__.r(__webpack_exports__);
 $(document).ready(function () {
   $('#imgPreviewToUpload').change(function () {
     var file = this.files[0];
-    $form = $(this);
     console.log(file);
 
     if (file) {

@@ -9,6 +9,8 @@ use App\Models\ProtfolioContent;
 use App\Models\History;
 use App\Models\AboutmeTitle;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Contanct;
+use App\Models\ContanctSoft;
 use App\Http\Controllers\Api;
 
 class ManagePage extends Controller
@@ -16,18 +18,26 @@ class ManagePage extends Controller
     public function manageIndex()
     {
          $homedata=Home::where("HomeID","1")->get();
-         $PopNameTag=["PopupSetting","IndexContent","PortfoliotitleSetting","creatProjectPotup","creatAboutMePotup"];
+         $PopNameTag=["PopupSetting","IndexContent","PortfoliotitleSetting","creatProjectPotup","creatAboutMePotup","contactPotup"];
+         $navigationlinkTag=["#portfolio","#about","#team"];
          $menu=$homedata[0]->Pids->where("Pid",">","1")->select("PageName")->get()->toArray();
          $protfolioData=Protfolio::where("Pid","2")->get();
          $protfolioPojectsData=ProtfolioContent::where("Pid","2")->orderBy("updated_at","asc")->get();
          $AboutmeData=AboutmeTitle::where("Pid","3")->get();
-        return View("manage",["manager"=>"true",
-        "homedata"=>$homedata[0],
-        "protfolioData"=>count($protfolioData)>0? $protfolioData:"",
-        "PopNameTag"=>$PopNameTag,
-        "menu"=>$menu,
-        "protfolioPojectsData"=>$protfolioPojectsData,
-        "AboutmeData"=>count($AboutmeData)>0? $AboutmeData:"",
+         $HistoryDate=History::where("Pid","3")->get();
+         $ContanctDate=Contanct::where("Pid","4")->get();
+        return View("manage",[
+            "manager"=>"true",
+            "navigationlinkTag"=>$navigationlinkTag,
+            "homedata"=>$homedata[0],
+            "protfolioData"=>count($protfolioData)>0? $protfolioData:"",
+            "PopNameTag"=>$PopNameTag,
+            "menu"=>$menu,
+            "protfolioPojectsData"=>$protfolioPojectsData,
+            "AboutmeData"=>count($AboutmeData)>0? $AboutmeData:"",
+            "HistoryDate"=> $HistoryDate,
+            "ContanctDate"=>$ContanctDate
+            
     ]);
     }
     //從資料庫取直 CURD 

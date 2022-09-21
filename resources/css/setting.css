@@ -1,3 +1,155 @@
+@media (max-width: 767px) { /*小於767*/
+    .aboutImg
+    {
+        position: relative;
+        top: -48px;
+        height: 66px !important;
+    }
+    .aboutImg-hover {
+        position: relative;
+        color: white;
+        opacity: 1;
+        top: 10px;
+    }
+    .aboutImg-hover>div >svg{
+        width: 28px;
+    }
+    .team-member img {
+        width: 8rem !important;
+        height: 8rem !important;
+        border: 0.5rem solid rgba(0, 0, 0, 0.1);
+        left: -40px;
+    }
+    .bk{
+        width: 224px;
+        height: 224px;
+        position: relative;
+        
+        border-radius: 50% !important;
+        left: 35%;
+      }
+    .contactme-hover {
+        position: relative;
+        color: #ffd400;;
+        opacity: 1;
+        left: -41px;
+        top: 42px ;
+    }
+}
+@media (min-width: 768px)  {
+    .aboutImg
+    {
+        position: relative;
+        top: -48px;
+        height: 88px !important;
+    }
+    .aboutImg-hover {
+        position: relative;
+        color: white;
+        opacity: 1;
+        top: 17px;
+    }
+    .team-member img {
+        width: 8rem !important;
+        height: 8rem !important;
+        border: 0.5rem solid rgba(0, 0, 0, 0.1);
+        left: -40px;
+    }
+    .bk{
+        width: 224px;
+        height: 224px;
+        position: relative;
+        
+        border-radius: 50% !important;
+        left: 40%;
+      }
+    .contactme-hover {
+        position: relative;
+        color: #ffd400;;
+        opacity: 1;
+        left: -41px;
+        top: 42px ;
+    }
+}
+@media (min-width: 992px) {/*992以上*/
+    .aboutImg
+    {
+        position: relative;
+        top: -48px;
+        height: 136px !important;
+    }
+    .aboutImg-hover {
+        position: relative;
+        color: white;
+        opacity: 1;
+        top: 47px;
+    }
+    .aboutImgaddimgicon{
+        height: 136px !important;
+    }
+    .team-member img {
+        width: 12rem !important;
+        height: 12rem !important;
+        border: 0.5rem solid rgba(0, 0, 0, 0.1);
+        left: -40px;
+    }
+    .contactme-hover {
+        position: relative;
+        color: #ffd400;;
+        opacity: 1;
+        top: 75px ;
+    }
+    .bk{
+        width: 224px;
+        height: 224px;
+        position: relative;
+        
+        border-radius: 50% !important;
+        left: 42%;
+      }
+  }
+  @media  (min-width: 1200px) /*1200以上*/
+  {
+    .aboutImg
+    {
+        position: relative;
+        top: -48px;
+        height: 156px !important;
+    }
+    .aboutImg-hover{
+        position: relative;
+        color: white;
+        opacity: 1; 
+        top: 51px;
+}
+    .aboutImgaddimgicon{
+        height: 156px !important;
+    }
+    .contactme-hover {
+        position: relative;
+        color: #ffd400;;
+        opacity: 1;
+        top: 87px;
+    }
+    .team-member img {
+        width: 14rem !important;
+        height: 14rem !important;
+        border: 0.5rem solid rgba(0, 0, 0, 0.1);
+        left: -40px;
+    }
+    .bk{
+        width: 224px;
+        height: 224px;
+        position: relative;
+        
+        border-radius: 50% !important;
+        left: 45%;
+      }
+  }
+  @media  (min-width: 1800px)
+  {
+
+  }
 .managerpage-Popup-ContentTitle{
     width: 50%;
 }
@@ -23,4 +175,35 @@
 }
 .ProjectLinkTextBox{
     width: 556px;
+}
+
+
+
+.aboutImg:hover {
+    background-color: yellow;
+    opacity: 0.1;    
+    transition: opacity ease-in-out 0.25s
+  } 
+
+
+
+
+  .contactmeImg
+  {
+      z-index: 1;
+      position: relative;
+      opacity: 1; 
+      top: -45px;
+  }
+.contactmeImg:hover {
+    background-color: yellow;
+    opacity: 0.15;    
+    transition: opacity ease-in-out 0.25s;
+    top: -45px;
+  } 
+
+
+.Contactlink{
+    position: relative;
+    width: 224px;
 }

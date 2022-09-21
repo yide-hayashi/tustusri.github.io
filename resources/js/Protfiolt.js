@@ -108,3 +108,44 @@
        }
    
    }
+
+
+  window.delAboutme=function($index)
+ {
+    $aboutmeid=$(".aboutmeid").eq($index).text();
+
+
+    $form = $(this)
+
+    $.ajax({
+    url: "/managerpage/aboutme/del/"+$aboutmeid,
+    type: 'delete',
+    data: $aboutmeid,
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    success: function (response) {
+        
+        $('.error').remove();
+        console.log(response)
+        if(response.error){
+            
+            $.each(response.errors, function(name, error){
+                error = '<small class="text-muted error">' + error + '</small>'
+                $form.find('[name=' + name + ']').after(error);
+            })
+        }
+        else{
+            console.log(response.errors)
+            if(response.errors=="")
+            {
+                $(".timeline").children().eq($index).remove()
+               // location.href = '/managerpage'
+            }
+        }
+    },
+    cache: false,
+    contentType: false,
+    processData: false
+    });
+}
