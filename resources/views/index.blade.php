@@ -5,7 +5,7 @@
 @section("IndexBody")
     @includeIf("SectionObj.navigation",["homedata"=>$homedata,"PopNameTag"=>"#".$PopNameTag[0],"menu"=>$menu])
     <!-- Masthead-->
-    @includeIf("SectionObj.Masthead",["homedata"=>$homedata,"PopNameTag"=>"#".$PopNameTag[1]])
+    @includeIf("SectionObj.masthead",["homedata"=>$homedata,"PopNameTag"=>"#".$PopNameTag[1]])
     <!-- Portfolio Grid-->
      @includeIf("normal.PortfolioGrid")
     <!-- About-->
