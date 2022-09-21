@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\protfolio;
+use App\Models\Protfolio;
 use App\Models\Home;
 use App\Models\PageName;
 use App\Models\ProtfolioContent;

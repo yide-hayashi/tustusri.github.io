@@ -17,7 +17,7 @@
                         <a  href="/managerpage/Contact/show"><img class="mx-auto rounded-circle contactmeImg" src="{{$ContanctDate[0]->img}}" /></a>
                     </div>
                     @else
-                    <a  href="/managerpage/Contact/show"><img class="mx-auto rounded-circle" src="{{$ContanctDate[0]->img}}" /></a>
+                    <a  href="#"><img class="mx-auto rounded-circle" src="{{$ContanctDate[0]->img}}" /></a>
                     @endif
                     
                     <h4>{{$ContanctDate[0]->ContanctTitle}}</h4>

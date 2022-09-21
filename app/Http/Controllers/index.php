@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\protfolio;
+use App\Models\Protfolio;
 use App\Models\Home;
 use App\Models\PageName;
 use App\Models\ProtfolioContent;
@@ -10,6 +10,7 @@ use App\Models\AboutmeTitle;
 use App\Models\Contanct;
 use App\Models\ContanctSoft;
 use App\Models\Category;
+
 use Illuminate\Http\Request;
 
 class index extends Controller

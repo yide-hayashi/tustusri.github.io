@@ -9,7 +9,7 @@
                         <div class="modal-body">
                             <!-- Project details-->
                             <h2 class="text-uppercase">{{$SettingName}}</h2>
-                            <form action="/updateText/managerpage/" method="post" >
+                            <form action="/managerpage/updateTitle/updateText" method="post" >
                             {{ csrf_field() }}
                             {{ method_field('put') }}
                                 <ul class="list-inline">

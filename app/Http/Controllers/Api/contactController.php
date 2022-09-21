@@ -60,9 +60,9 @@ class contactController extends Controller
         $ContanctData=Contanct::where("Pid",4)->get();
         if(count($ContanctData)<1)
         {
-            return View("SectionObj\settingpop\SettingContactNodata");
+            return View("SectionObj.settingpop.SettingContactNodata");
         }
-        return View("SectionObj\settingpop\SettingContact",["ContanctData"=>$ContanctData[0]]);
+        return View("SectionObj.settingpop.SettingContact",["ContanctData"=>$ContanctData[0]]);
         //
     }
 

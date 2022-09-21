@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\softDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Home;
 class PageName extends Model
 {
-    use HasFactory,softDeletes;
+    use HasFactory,SoftDeletes;
     protected $datas=["deleted_at"];
     protected $table="PageNames";
     protected $promaryKey="Pid";

@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\softDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Protfolio extends Model
 {
-    use HasFactory,softDeletes;
+    use HasFactory,SoftDeletes;
     protected $datas=["deleted_at"];
     protected $table="Protfolio";
     protected $promaryKey="ProtfolioID";

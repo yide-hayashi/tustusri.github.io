@@ -17,11 +17,11 @@ use App\Http\Controllers\Api;
 Route::get('/',"index@indexPage");
 
 Route::post("/managerpage/upload","Api\HomePageController@updateImg");
-Route::put("/{id}/managerpage","Api\HomePageController@update");
+
 Route::group(["prefix"=>"managerpage"],function()
 {
     Route::get('/',"ManagePage@manageIndex");
-
+    Route::put("/updateTitle/{id}","Api\HomePageController@update");
 
 
     Route::put("/store","Api\protfolio@store");
