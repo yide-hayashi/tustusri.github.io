@@ -207,6 +207,10 @@
     position: relative;
     width: 224px;
 }
+.topresize{
+    position: relative;
+    top: -28%;
+}
 @charset "UTF-8";
 /*!
 * Start Bootstrap - Agency v7.0.11 (https://startbootstrap.com/theme/agency)

@@ -74,7 +74,7 @@ file_get_contents($request->file('fileToUpload')));
         $img=Home::where("Pid",1);
         $img->update(["LogoImg"=>"/img/".$request->file('fileToUpload')->getClientOriginalName()]);
         
-        //return View("manage",["manager"=>"true"]);
+        //return View("manage",["manager"=>true]);
         return redirect("/managerpage");
         //
     }

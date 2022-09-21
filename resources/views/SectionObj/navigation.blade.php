@@ -3,6 +3,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
         @if ($manager==true)
+        
         <a class="navbar-brand portfolio-link"  data-bs-toggle="modal" href="{{$PopNameTag}}"><img src="{{ asset($homedata->LogoImg) }}" alt="..." /></a>
         @else
         <a class="navbar-brand" href="#page-top"><img src="{{ asset($homedata->LogoImg) }}" alt="..." /></a>
@@ -18,6 +19,9 @@
                 <li class="nav-item"><a class="nav-link" href="{{$navigationlinkTag[$c]}}">{{$i["PageName"]}}</a></li>
                 @php($c++)
                 @endforeach
+                @auth
+                <li class="nav-item"><a class="nav-link" href="/user/auth/sign-out">Logout</a></li>
+                @endauth
             </ul>
         </div>
     </div>

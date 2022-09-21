@@ -46,5 +46,15 @@ Route::group(["prefix"=>"managerpage"],function()
     Route::put("/Contact/update","Api\contactController@update");
 });
 
+Route::group(["prefix"=>"user"],function(){ //同一層的可以寫在一起
+    Route::group(["prefix"=>"auth"],function(){
+        Route::get("/sign-up","UserAuthController@signUpPage");
+        Route::post("/sign-up","UserAuthController@signUpProcess");
 
+        Route::get("/sign-out","UserAuthController@signOut");
+
+        Route::get("/login","UserAuthController@loginpage");
+        Route::post("/login","UserAuthController@loginpagePost");
+    });
+});
 

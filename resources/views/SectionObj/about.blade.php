@@ -27,8 +27,10 @@
                                     </div>
                                     <img class="rounded-circle img-fluid aboutImg" src="{{$HistoryDate[$i]->img}}"  />
                                 </a>
+                 @else
+                 <img class="rounded-circle img-fluid aboutImg-normal" src="{{$HistoryDate[$i]->img}}"  />
                  @endif 
-                </div>
+                    </div>
                 <div class="timeline-panel">
                 @if ($manager==true)
                 <button type="button" class="btn-close" onclick="delAboutme({{$i}})" aria-label="Close"></button>
@@ -48,9 +50,11 @@
                         <a class="portfolio-link" data-bs-toggle="" href="/managerpage/aboutme/showAboutMeBeUpdatedContent/{{$HistoryDate[$i]->HistoresID}}">
                                 <div class="aboutImg-hover">
                                         <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                    </div>
+                                </div>
                                     <img class="rounded-circle img-fluid aboutImg" src="{{$HistoryDate[$i]->img}}"  />
                                 </a>
+                @else
+                <img class="rounded-circle img-fluid aboutImg-normal" src="{{$HistoryDate[$i]->img}}"  />
                  @endif     
                 </div>
                 <div class="timeline-panel">
