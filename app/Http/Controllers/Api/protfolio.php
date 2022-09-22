@@ -124,12 +124,10 @@ class protfolio extends Controller
                 Models\Category::create(["ProtfolioContentID"=>$p[0]->ProtfolioContentID,"PopupCategory"=>$aa]);
             }
         }
-        /*
         else
         {
-            $this->createContent($request);
+            $this->createContentPage($request);
         }
-        */
          return response()->json(['errors'=>""]);
         exit;
     }
@@ -142,7 +140,8 @@ class protfolio extends Controller
         //
         return redirect("/managerpage");
     }
-
+    
+    ///這是Category::create 引入createContentPage
     public function createContentPage(Request $request)
     {
         try
@@ -173,6 +172,7 @@ class protfolio extends Controller
                 $categorynameArray=$request->input("categoryname");
                 return response()->json(['errors'=>["此專案名稱無法使用"],"categoryname"=>$request->input("categoryname"),"a"=>$request->input("categoryname")]);
             }
+            //引入createContentPage
             $NewID=$this->createContent($request);
             //新增類別
             $categorynameArray=$request->input("categoryname");
@@ -198,7 +198,13 @@ class protfolio extends Controller
 
     public function createContent(Request $request)
     {
-        
+        $p=Models\ProtfolioContent::withTrashed()->where([["Pid",2],["PopupName",$request->input("PopupName")]])
+        ->get();
+        if(count($p)>0) 
+        {
+            return response()->json(['errors'=>["此專案名稱無法使用",""],"categoryname"=>$request->input("categoryname"),"a"=>$request->input("categoryname")]);
+        }
+
         if($request->file('ProtfolioProjecfileToUpload')==null)
         {
             $imgpath="";

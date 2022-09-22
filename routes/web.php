@@ -58,3 +58,7 @@ Route::group(["prefix"=>"user"],function(){ //同一層的可以寫在一起
     });
 });
 
+
+Route::get('/t',function(){
+    var_dump(public_path(),storage_path());
+});
