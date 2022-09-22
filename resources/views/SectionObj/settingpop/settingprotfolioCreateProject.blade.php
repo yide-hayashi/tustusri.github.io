@@ -17,7 +17,7 @@
                             
                         <div id="form-errors" style="color: red"></div>
                             <!-- Project details-->
-                            <form action="/managerpage/createContent" enctype="multipart/form-data" id="id_ajax_formT" method="post" >
+                            <form action="/managerpage/createContent" enctype="multipart/form-data" id="id_ajax_formCreate" method="post" >
                             {!! csrf_field() !!}
                             {{ method_field('post') }}
                                 <input class="managerpage-PojectPopup-ContentTitle " type="text" name="PopupName" value="{{old('PopupName')==''? '':old('PopupName') }}">
