@@ -29,11 +29,16 @@
                                                 <div>圖片(preview):
                                                     <ul class="list-inline">
                                                         <li>
-                                                            <img id="imgPreview"  src="{{old('fileToUpload')==''? $historyData->img:old('fileToUpload')}}" />
-                                                            <br>
+                                                            <div id="cropContainer"></div>
+                                                            
+                                                            <button class="resize-done" type="button">切圖</button>
+                                                        </li>
+                                                        <li>
+                                                        <img id="imgPreview" src="{{old('fileToUpload')==''? $historyData->img:old('fileToUpload')}}" />
+                                                        <textarea id="corpedimg" style="display:none" name="corpedimg"></textarea>
+                                                        <br>
                                                                 選擇檔案:
                                                                 <input type="file" name="fileToUpload" id="imgPreviewToUpload" value="{{old('fileToUpload')==''? $historyData->img:old('fileToUpload')}}" >
-                                                        
                                                         </li>
                                                     </ul>
                                                 </div>                   
@@ -76,6 +81,40 @@
     </div>
 </div>
 <script>
- 
+
+function displaycorp($byteimg)
+{
+    $('#cropContainer').croppie("destroy");
+    $("#imgPreview").hide();
+    $(".resize-done").show();
+    var c=$('#cropContainer').croppie({
+        viewport: { width: 600, height: 600 },
+        boundary: { width: 600, height: 600 },
+    });
+    c.croppie('bind', {
+    url: $byteimg,
+    points: [0,0]
+    });
+}
+
+
+
+$(document).ready(function(){
+    $(".resize-done").hide();
+$(".resize-done").click(function(){
+    $('#cropContainer').croppie("result",{
+        type:"base64",
+        size:"viewport"
+    }).then(function(a){
+        //$("#imgPreview").attr("src",a);
+        $("#corpedimg").val(a).hide();
+        $(".resize-done").hide();
+    });
+    
+    });
+});
+// Display the cropped image on the page.
+
+
   </script>
   @endsection

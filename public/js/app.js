@@ -2487,7 +2487,7 @@ $(document).ready(function () {
 
       reader.onload = function (event) {
         console.log(event.target.result);
-        $('#imgPreview').attr('src', event.target.result);
+        displaycorp(event.target.result);
       };
 
       reader.readAsDataURL(file);

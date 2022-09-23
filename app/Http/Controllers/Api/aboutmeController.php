@@ -149,11 +149,14 @@ class aboutmeController extends Controller
             {
                 Storage::delete($historyData[0]->img);
             }
+            $base64=$request->input("corpedimg");
+            $base64=str_replace('data:image/jpeg;base64,','', $base64);
+            $base64=str_replace('data:image/png;base64,','', $base64);
+            $data = base64_decode($base64);
             $imgpath="/img/aboutme/".Str::random(5).$request->file('fileToUpload')->getClientOriginalName();
-            Storage::put($imgpath,
-            file_get_contents($request->file('fileToUpload')));
-            //圖片處理 弄成呈長寬1:1
-            
+            Storage::put($imgpath,$data
+            );
+            //JQuery圖片處理 弄成呈長寬1:1 
         }
 
         History::where("HistoresID",$id)->update([
