@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Validator;
-
+use Illuminate\Support\Str;
 class aboutmeController extends Controller
 {
     /**
@@ -73,9 +73,9 @@ class aboutmeController extends Controller
         }
         else
         {
-            Storage::put("/img/aboutme/".$request->file('fileToUpload')->getClientOriginalName(),
+            $imgpath="/img/aboutme/".Str::random(5).$request->file('ProtfolioProjecfileToUpload')->getClientOriginalName();
+            Storage::put($imgpath,
             file_get_contents($request->file('fileToUpload')));
-            $imgpath="/img/aboutme/".$request->file('fileToUpload')->getClientOriginalName();
         }
         $ContentSub=($request->ContentSub==null? "":$request->ContentSub);
         History::create([
@@ -145,10 +145,15 @@ class aboutmeController extends Controller
         }
         else
         {
-            Storage::put("/img/aboutme/".$request->file('fileToUpload')->getClientOriginalName(),
+            if((Storage::exists($historyData[0]->img))==true)
+            {
+                Storage::delete($historyData[0]->img);
+            }
+            $imgpath="/img/aboutme/".Str::random(5).$request->file('fileToUpload')->getClientOriginalName();
+            Storage::put($imgpath,
             file_get_contents($request->file('fileToUpload')));
             //圖片處理 弄成呈長寬1:1
-            $imgpath="/img/aboutme/".$request->file('fileToUpload')->getClientOriginalName();
+            
         }
 
         History::where("HistoresID",$id)->update([

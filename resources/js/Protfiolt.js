@@ -67,7 +67,7 @@
    $("#CategoryTextBut").click(function(){
        
        
-       if(!checkCategoryText($(".CategoryText").val()))
+       if(!checkCategoryText($(".CategoryText").val()) && $(".CategoryText").val()!="")
        {
            $("#categoryTextLineList").append('<div class="badge bg-info text-wrap categoryTextLine"onclick="CategoryTextDel('+$("#categoryTextLineList").children().length
            +')" >'+$(".CategoryText").val()+'</div>');

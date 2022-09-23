@@ -54,16 +54,16 @@ class ManagePage extends Controller
     //
     public function updateImg(Request $request)
     {
-        $request->input("fileToUpload");
-        Storage::put("/img/".$request->file('fileToUpload')->getClientOriginalName(),
-file_get_contents($request->file('fileToUpload')));
+        // $request->input("fileToUpload");
+//         Storage::put("/img/".$request->file('fileToUpload')->getClientOriginalName(),
+// file_get_contents($request->file('fileToUpload')));
 
-        // $img=Home::where("Pid",1);
-        // $img->update(["LogoImg"=>$request->file('fileToUpload')])
-        // ->save();
-        //return View("manage",["manager"=>true]);
-        return $request->file('fileToUpload')->getClientOriginalName();
-        //
+//         // $img=Home::where("Pid",1);
+//         // $img->update(["LogoImg"=>$request->file('fileToUpload')])
+//         // ->save();
+//         //return View("manage",["manager"=>true]);
+//         return $request->file('fileToUpload')->getClientOriginalName();
+//         //
     }
 
 }

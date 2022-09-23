@@ -8,6 +8,7 @@ use App\Models\Home;
 use Validator;
 use App\Models\ProtfolioContent;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class protfolio extends Controller
 {
@@ -90,9 +91,15 @@ class protfolio extends Controller
             }
             else
             {
-                Storage::put("/img/ProtfolioProjec/".$request->file('ProtfolioProjecfileToUpload')->getClientOriginalName(),
+                if(Storage::exists($p[0]->ProtfolioContentImg))
+                {
+                    Storage::delete($p[0]->ProtfolioContentImg);
+                }
+                $imgpath=Str::random(5).$request->file('ProtfolioProjecfileToUpload')->getClientOriginalName();
+                Storage::put("/img/ProtfolioProjec/".$imgpath,
                 file_get_contents($request->file('ProtfolioProjecfileToUpload')));
-                $imgpath=$request->file('ProtfolioProjecfileToUpload')->getClientOriginalName();
+               
+                
             }
 
 
@@ -211,10 +218,13 @@ class protfolio extends Controller
         }
         else
         {
-            Storage::put("/img/ProtfolioProjec/".$request->file('ProtfolioProjecfileToUpload')->getClientOriginalName(),
+            if(Storage::exists($p[0]->ProtfolioContentImg))
+                {
+                    Storage::delete($p[0]->ProtfolioContentImg);
+                }
+            $imgpath=Str::random(5).$request->file('ProtfolioProjecfileToUpload')->getClientOriginalName();
+            Storage::put("/img/ProtfolioProjec/".$imgpath,
             file_get_contents($request->file('ProtfolioProjecfileToUpload')));
-            $imgpath=$request->file('ProtfolioProjecfileToUpload')->getClientOriginalName();
-
         }
             
         Models\ProtfolioContent::create([                

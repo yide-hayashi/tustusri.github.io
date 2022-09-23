@@ -65,8 +65,11 @@ class HomePageController extends Controller
         return redirect("/managerpage");
     }
 
+    //title img
     public function updateImg(Request $request)
     {
+        
+        
         $request->input("fileToUpload");
         Storage::put("/img/".$request->file('fileToUpload')->getClientOriginalName(),
 file_get_contents($request->file('fileToUpload')));
