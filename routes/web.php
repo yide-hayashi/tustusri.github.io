@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/',"index@indexPage")->middleware("guest");
+Route::get('/',"index@indexPage");
 
 Route::post("/managerpage/upload","Api\HomePageController@updateImg");
 
@@ -73,4 +73,5 @@ Route::get("/login",function(){
 });
 Route::get('/t',function(){
     var_dump(Auth::check());
+    echo phpinfo();
 })->middleware("auth");
