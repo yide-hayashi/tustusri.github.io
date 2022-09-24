@@ -50,7 +50,6 @@ class protfolio extends Controller
     public function storeContent(Request $request)
     {
         $input = $request->all();
-        
         $rules = [
             'PopupName' => [
                 'required',
@@ -60,13 +59,16 @@ class protfolio extends Controller
                 'required',
                 'min:1',
             ],
+            'ProtfolioProjecfileToUpload' => 
+            'image|max:3072|mimes:jpg,jpeg,png'
+                
         ];
         
         $validator = Validator::make($input, $rules);
 
         if($validator->fails())
         {
-            return response()->json(['errors'=>$validator->errors()->all()]);
+            return response()->json(['errors'=>$validator->errors()->all(),"a"=>$request->file('ProtfolioProjecfileToUpload')->getSize()]);
         }
         
        
@@ -88,8 +90,6 @@ class protfolio extends Controller
                 $imgpath=Str::random(5).$request->file('ProtfolioProjecfileToUpload')->getClientOriginalName();
                 Storage::put("/img/ProtfolioProjec/".$imgpath,
                 file_get_contents($request->file('ProtfolioProjecfileToUpload')));
-               
-                
             }
 
 
