@@ -73,9 +73,12 @@ class aboutmeController extends Controller
         }
         else
         {
-            $imgpath="/img/aboutme/".Str::random(5).$request->file('ProtfolioProjecfileToUpload')->getClientOriginalName();
-            Storage::put($imgpath,
-            file_get_contents($request->file('fileToUpload')));
+                $base64=$request->input("corpedimg");
+                $base64=str_replace('data:image/jpeg;base64,','', $base64);
+                $base64=str_replace('data:image/png;base64,','', $base64);
+                $data = base64_decode($base64);
+                $imgpath="/img/aboutme/".Str::random(5).$request->file('fileToUpload')->getClientOriginalName();
+                Storage::put($imgpath,$data);
         }
         $ContentSub=($request->ContentSub==null? "":$request->ContentSub);
         History::create([
@@ -164,7 +167,7 @@ class aboutmeController extends Controller
             "Startyear"=>(int)$request->Startyear,
             "Endyear"=>(int)$request->Endyear,
             "ContentTitle"=>$request->ContentTitle,
-            "ContentSub"=>$request->ContentSub,
+            "ContentSub"=>$request->ContentSub==null? "":$request->ContentSub,
             "img"=>$imgpath
             
         ]);

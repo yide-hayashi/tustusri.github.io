@@ -29,7 +29,13 @@
                                                 <div>圖片(preview):
                                                     <ul class="list-inline">
                                                         <li>
-                                                            <img id="imgPreview"  src="{{old('fileToUpload')==''? '':old('fileToUpload')}}" />
+                                                            <div id="cropContainer"></div>
+                                                            
+                                                            <button class="resize-done" type="button">切圖</button>
+                                                        </li>
+                                                        <li>
+                                                            <img id="imgreview"  src="{{old('fileToUpload')==''? '':old('fileToUpload')}}" />
+                                                            <textarea id="corpedimg" style="display:none" name="corpedimg"></textarea>
                                                             <br>
                                                                 選擇檔案:
                                                                 <input type="file" name="fileToUpload" id="imgPreviewToUpload" value="{{old('fileToUpload')==''? '':old('fileToUpload')}}" >
@@ -77,6 +83,45 @@
     </div>
 </div>
 <script>
- 
+
+function displaycorp($byteimg)
+{
+    $('#cropContainer').croppie("destroy");
+    $("#imgPreview").hide();
+    $(".resize-done").show();
+    var c=$('#cropContainer').croppie({
+        viewport: { width: 600, height: 600 },
+        boundary: { width: 600, height: 600 },
+    });
+    c.croppie('bind', {
+    url: $byteimg,
+    points: [0,0]
+    });
+}
+
+function crop()
+{
+    $('#cropContainer').croppie("result",{
+        type:"base64",
+        size:"viewport"
+    }).then(function(a){
+        $("#corpedimg").val(a).hide();
+        $(".resize-done").hide();
+    });
+    
+}
+
+$(document).ready(function(){
+    $(".resize-done").hide();
+    $(".resize-done").click(function(){
+        crop();
+    });
+    $("#storeContentSave").click(function(){
+        crop();
+    });
+});
+// Display the cropped image on the page.
+
+
   </script>
   @endsection

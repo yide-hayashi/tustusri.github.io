@@ -50,7 +50,6 @@ class protfolio extends Controller
     public function storeContent(Request $request)
     {
         $input = $request->all();
-        
         $rules = [
             'PopupName' => [
                 'required',
@@ -60,6 +59,9 @@ class protfolio extends Controller
                 'required',
                 'min:1',
             ],
+            'ProtfolioProjecfileToUpload' => 
+            'image|max:3072|mimes:jpg,jpeg,png'
+                
         ];
         
         $validator = Validator::make($input, $rules);
@@ -67,6 +69,10 @@ class protfolio extends Controller
         if($validator->fails())
         {
             return response()->json(['errors'=>$validator->errors()->all()]);
+        }
+        else if($request->file('ProtfolioProjecfileToUpload')->getSize() > 3072*1024)
+        {
+            return response()->json(['errors'=>["上船失敗，檔案過大"]]);
         }
         
        
@@ -88,8 +94,6 @@ class protfolio extends Controller
                 $imgpath=Str::random(5).$request->file('ProtfolioProjecfileToUpload')->getClientOriginalName();
                 Storage::put("/img/ProtfolioProjec/".$imgpath,
                 file_get_contents($request->file('ProtfolioProjecfileToUpload')));
-               
-                
             }
 
 
@@ -104,21 +108,24 @@ class protfolio extends Controller
             //確認類別or新增類別
             $categorynameArray=$request->input("categoryname");
             $c=Models\Category::where("ProtfolioContentID",$p[0]->ProtfolioContentID)->get();
-            $OriginalArray=[];
-            foreach($c as $ci)
+            if(count($c)>0)
             {
-                array_push($OriginalArray,$ci->PopupCategory);
-            }
-            $delArray=array_diff($OriginalArray,$categorynameArray);
-            $AddArray=array_diff($categorynameArray,$OriginalArray);
-
-            foreach($delArray as $da)
-            {
-                Models\Category::where([["ProtfolioContentID",$c[0]->ProtfolioContentID],"PopupCategory"=>$da])->delete();
-            }
-            foreach($AddArray as $aa)
-            {
-                Models\Category::create(["ProtfolioContentID"=>$p[0]->ProtfolioContentID,"PopupCategory"=>$aa]);
+                $OriginalArray=[];
+                foreach($c as $ci)
+                {
+                    array_push($OriginalArray,$ci->PopupCategory);
+                }
+                $delArray=array_diff($OriginalArray,$categorynameArray);
+                $AddArray=array_diff($categorynameArray,$OriginalArray);
+    
+                foreach($delArray as $da)
+                {
+                    Models\Category::where([["ProtfolioContentID",$c[0]->ProtfolioContentID],"PopupCategory"=>$da])->delete();
+                }
+                foreach($AddArray as $aa)
+                {
+                    Models\Category::create(["ProtfolioContentID"=>$p[0]->ProtfolioContentID,"PopupCategory"=>$aa]);
+                }
             }
             return response()->json(['errors'=>""]);
         }
@@ -176,14 +183,17 @@ class protfolio extends Controller
             $NewID=$this->createContent($request);
             //新增類別
             $categorynameArray=$request->input("categoryname");
-            foreach($categorynameArray as $i )
-            {
-                Models\Category::create([
-                    "ProtfolioContentID"=> $NewID,
-                    "PopupCategory"=>$i
-                ]);
+            if($categorynameArray!=null)
+            {            
+                foreach($categorynameArray as $i )
+                {
+                    Models\Category::create([
+                        "ProtfolioContentID"=> $NewID,
+                        "PopupCategory"=>$i
+                    ]);
+                }
+
             }
-    
 
              return response()->json(['errors'=>""]);
         }
