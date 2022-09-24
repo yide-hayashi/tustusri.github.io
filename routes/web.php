@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/',"index@indexPage")->middleware("guest");
+Route::get('/',"index@indexPage");
 
 Route::post("/managerpage/upload","Api\HomePageController@updateImg");
 
