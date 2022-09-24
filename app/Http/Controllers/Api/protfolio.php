@@ -70,7 +70,7 @@ class protfolio extends Controller
         {
             return response()->json(['errors'=>$validator->errors()->all()]);
         }
-        else if($request->file('ProtfolioProjecfileToUpload')->getSize() > 3072*1024)
+        else if($request->file('ProtfolioProjecfileToUpload')->getSize() > 24576*1024)
         {
             return response()->json(['errors'=>["上船失敗，檔案過大"]]);
         }
