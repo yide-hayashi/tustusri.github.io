@@ -97,20 +97,25 @@ function displaycorp($byteimg)
     });
 }
 
-
-
-$(document).ready(function(){
-    $(".resize-done").hide();
-$(".resize-done").click(function(){
+function crop()
+{
     $('#cropContainer').croppie("result",{
         type:"base64",
         size:"viewport"
     }).then(function(a){
-        //$("#imgPreview").attr("src",a);
         $("#corpedimg").val(a).hide();
         $(".resize-done").hide();
     });
     
+}
+
+$(document).ready(function(){
+    $(".resize-done").hide();
+    $(".resize-done").click(function(){
+        crop();
+    });
+    $("#storeContentSave").click(function(){
+        crop();
     });
 });
 // Display the cropped image on the page.
