@@ -2487,7 +2487,7 @@ $(document).ready(function () {
 
       reader.onload = function (event) {
         console.log(event.target.result);
-        displaycorp(event.target.result);
+        if ($('#cropContainer').length > 0) displaycorp(event.target.result);else $("#imgPreview").attr("src", event.target.result).show();
       };
 
       reader.readAsDataURL(file);

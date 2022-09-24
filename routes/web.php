@@ -27,12 +27,15 @@ Route::group(["prefix"=>"managerpage"],function()
     Route::put("/store","Api\protfolio@store");
     Route::post("/create","Api\protfolio@create");
 
+    Route::get('/createProject',"Api\protfolio@creatshow");
+    Route::get('/UpdateProject',"Api\protfolio@show");
+    
     Route::put("/storeContent","Api\protfolio@storeContent");
     Route::post("/createContent","Api\protfolio@createContentPage");
     Route::delete("/del/{pjn}","Api\protfolio@destroy");
 
-    Route::get('/UpdateProject',"Api\protfolio@show");
-    Route::get('/createProject',"Api\protfolio@creatshow");
+    
+    
 
     Route::put("/aboutme/update","Api\aboutmeController@update");
     Route::get("/aboutme","Api\aboutmeController@showAboutMeContent");

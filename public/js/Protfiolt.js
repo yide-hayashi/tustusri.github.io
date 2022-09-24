@@ -12,7 +12,6 @@ $(document).ready(function () {
     e.preventDefault();
     $form = $(this);
     var formData = new FormData(this);
-    var Data = [];
     var i = 0;
 
     for (i = 0; i < $("#categoryTextLineList").children().length; i++) {
@@ -22,6 +21,53 @@ $(document).ready(function () {
     formData.append('ProtfolioContentID', $("#ProtfolioContentID").text());
     $.ajax({
       url: "/managerpage/storeContent",
+      type: 'post',
+      data: formData,
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      success: function success(response) {
+        $('.error').remove();
+        console.log(response);
+
+        if (response.error) {
+          $.each(response.errors, function (name, error) {
+            error = '<small class="text-muted error">' + error + '</small>';
+            $form.find('[name=' + name + ']').after(error);
+          });
+        } else {
+          console.log(response.errors);
+
+          if (response.errors.length > 0 && response.errors != "") {
+            var FormErrors = "錯誤:<br>";
+            response.errors.forEach(function (e) {
+              FormErrors = FormErrors + e + "<br>";
+            });
+            $('#form-errors').html(FormErrors);
+          } else {
+            location.href = '/managerpage';
+            $('#form-errors').html("");
+          }
+        }
+      },
+      cache: false,
+      contentType: false,
+      processData: false
+    });
+  });
+  $('#id_ajax_formC').submit(function (e) {
+    e.preventDefault();
+    $form = $(this);
+    var formData = new FormData(this);
+    var i = 0;
+
+    for (i = 0; i < $("#categoryTextLineList").children().length; i++) {
+      formData.append('categoryname[' + i + ']', $("#categoryTextLineList").children().eq(i).text());
+    }
+
+    formData.append('ProtfolioContentID', $("#ProtfolioContentID").text());
+    $.ajax({
+      url: "/managerpage/createContent",
       type: 'POST',
       data: formData,
       headers: {
@@ -77,6 +123,10 @@ function checkCategoryText($CategoryText) {
   }
 
   return check;
+}
+
+function getNameData($formData) {
+  formData.append('_token', $("#ProtfolioContentID").text());
 }
 
 window.CategoryTextDel = function ($index) {

@@ -17,9 +17,9 @@
                             
                         <div id="form-errors" style="color: red"></div>
                             <!-- Project details-->
-                            <form action="/managerpage/storeContent" enctype="multipart/form-data" id="id_ajax_formT" method="post" >
+                            <form action="" enctype="multipart/form-data" id="id_ajax_formT" method="post" >
                             {!! csrf_field() !!}
-                            {{ method_field('PUT') }}
+                            {{ method_field('put') }}
                                 <input class="managerpage-PojectPopup-ContentTitle " type="text" name="PopupName" value="{{old('PopupName')==''? $protfolioData->PopupName:old('PopupName') }}">
                                 <div id="ProtfolioContentID" style="display: none">{{$protfolioData->ProtfolioContentID}}</div>
                                 <br>
@@ -46,7 +46,7 @@
                                             </li>
                                             <li class="list-group-item">
                                                 <div>專案詳細敘述:
-                                                    <input class="ProjectContentTextBox" type="text" name="PopupContent" value="{{$protfolioData==''? '':$protfolioData->PopupContent}}">
+                                                    <textarea class="ProjectContentTextBox" type="text" name="PopupContent" >{{$protfolioData==''? '':$protfolioData->PopupContent}}</textarea>
                                                 </div>                   
                                             </li>
                                             <li class="list-group-item">
@@ -106,6 +106,7 @@
     </div>
 </div>
 <script>
+
 
 
   </script>

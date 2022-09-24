@@ -49,7 +49,6 @@ class protfolio extends Controller
     }
     public function storeContent(Request $request)
     {
-        //var_dump($request);
         $input = $request->all();
         
         $rules = [
@@ -67,23 +66,14 @@ class protfolio extends Controller
 
         if($validator->fails())
         {
-            //資料驗證錯誤
-            // //return redirect('/user/auth/sign-up')->withErrors($validator);
-            // return redirect("/managerpage/UpdateProject?sname=".$request->PopupName)
-            // ->withErrors($validator) //連同驗證資料一起轉址
-            // ->withInput(); //withinput 可以把之前寫的資料留住 前端也要寫old()來取出資料
-						//對應old
-            
             return response()->json(['errors'=>$validator->errors()->all()]);
         }
         
        
-
-        $p=Models\ProtfolioContent::where("ProtfolioContentID",(int)$request->input("ProtfolioContentID"))
-        ->get();
-        if(count($p)>0) 
+        if($request->input("ProtfolioContentID")!=null) 
         {
-            
+            $p=Models\ProtfolioContent::where("ProtfolioContentID",(int)$request->input("ProtfolioContentID"))
+            ->get();
             if($request->file('ProtfolioProjecfileToUpload')==null)
             {
                 
@@ -130,12 +120,14 @@ class protfolio extends Controller
             {
                 Models\Category::create(["ProtfolioContentID"=>$p[0]->ProtfolioContentID,"PopupCategory"=>$aa]);
             }
+            return response()->json(['errors'=>""]);
         }
         else
         {
-            $this->createContentPage($request);
+           
+            //$this->createContentPage($request);
         }
-         return response()->json(['errors'=>""]);
+         //
         exit;
     }
 
@@ -174,6 +166,7 @@ class protfolio extends Controller
             }
             $p=Models\ProtfolioContent::withTrashed()->where([["Pid",2],["PopupName",$request->input("PopupName")]])
             ->get();
+            //return response()->json(['errors'=>count($p),"a"=>$request->input("categoryname")]);
             if(count($p)>0) 
             {
                 $categorynameArray=$request->input("categoryname");
@@ -192,7 +185,7 @@ class protfolio extends Controller
             }
     
 
-            return response()->json(['errors'=>""]);
+             return response()->json(['errors'=>""]);
         }
         catch(Exception $e)
         {
@@ -205,23 +198,12 @@ class protfolio extends Controller
 
     public function createContent(Request $request)
     {
-        $p=Models\ProtfolioContent::withTrashed()->where([["Pid",2],["PopupName",$request->input("PopupName")]])
-        ->get();
-        if(count($p)>0) 
-        {
-            return response()->json(['errors'=>["此專案名稱無法使用",""],"categoryname"=>$request->input("categoryname"),"a"=>$request->input("categoryname")]);
-        }
-
         if($request->file('ProtfolioProjecfileToUpload')==null)
         {
             $imgpath="";
         }
         else
         {
-            if(Storage::exists($p[0]->ProtfolioContentImg))
-                {
-                    Storage::delete($p[0]->ProtfolioContentImg);
-                }
             $imgpath=Str::random(5).$request->file('ProtfolioProjecfileToUpload')->getClientOriginalName();
             Storage::put("/img/ProtfolioProjec/".$imgpath,
             file_get_contents($request->file('ProtfolioProjecfileToUpload')));
