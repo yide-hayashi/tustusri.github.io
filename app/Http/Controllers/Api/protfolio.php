@@ -60,7 +60,7 @@ class protfolio extends Controller
                 'min:1',
             ],
             'ProtfolioProjecfileToUpload' => 
-            'image|max:3072|mimes:jpg,jpeg,png'
+            'image|max:24576|mimes:jpg,jpeg,png'
                 
         ];
         
