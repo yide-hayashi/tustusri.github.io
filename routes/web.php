@@ -73,4 +73,5 @@ Route::get("/login",function(){
 });
 Route::get('/t',function(){
     var_dump(Auth::check());
+    echo phpinfo();
 })->middleware("auth");
