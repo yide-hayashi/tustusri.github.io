@@ -104,21 +104,24 @@ class protfolio extends Controller
             //確認類別or新增類別
             $categorynameArray=$request->input("categoryname");
             $c=Models\Category::where("ProtfolioContentID",$p[0]->ProtfolioContentID)->get();
-            $OriginalArray=[];
-            foreach($c as $ci)
+            if(count($c)>0)
             {
-                array_push($OriginalArray,$ci->PopupCategory);
-            }
-            $delArray=array_diff($OriginalArray,$categorynameArray);
-            $AddArray=array_diff($categorynameArray,$OriginalArray);
-
-            foreach($delArray as $da)
-            {
-                Models\Category::where([["ProtfolioContentID",$c[0]->ProtfolioContentID],"PopupCategory"=>$da])->delete();
-            }
-            foreach($AddArray as $aa)
-            {
-                Models\Category::create(["ProtfolioContentID"=>$p[0]->ProtfolioContentID,"PopupCategory"=>$aa]);
+                $OriginalArray=[];
+                foreach($c as $ci)
+                {
+                    array_push($OriginalArray,$ci->PopupCategory);
+                }
+                $delArray=array_diff($OriginalArray,$categorynameArray);
+                $AddArray=array_diff($categorynameArray,$OriginalArray);
+    
+                foreach($delArray as $da)
+                {
+                    Models\Category::where([["ProtfolioContentID",$c[0]->ProtfolioContentID],"PopupCategory"=>$da])->delete();
+                }
+                foreach($AddArray as $aa)
+                {
+                    Models\Category::create(["ProtfolioContentID"=>$p[0]->ProtfolioContentID,"PopupCategory"=>$aa]);
+                }
             }
             return response()->json(['errors'=>""]);
         }
@@ -176,14 +179,17 @@ class protfolio extends Controller
             $NewID=$this->createContent($request);
             //新增類別
             $categorynameArray=$request->input("categoryname");
-            foreach($categorynameArray as $i )
-            {
-                Models\Category::create([
-                    "ProtfolioContentID"=> $NewID,
-                    "PopupCategory"=>$i
-                ]);
+            if($categorynameArray!=null)
+            {            
+                foreach($categorynameArray as $i )
+                {
+                    Models\Category::create([
+                        "ProtfolioContentID"=> $NewID,
+                        "PopupCategory"=>$i
+                    ]);
+                }
+
             }
-    
 
              return response()->json(['errors'=>""]);
         }
