@@ -70,11 +70,14 @@ class protfolio extends Controller
         {
             return response()->json(['errors'=>$validator->errors()->all()]);
         }
-        else if($request->file('ProtfolioProjecfileToUpload')->getSize() > 24576*1024)
-        {
-            return response()->json(['errors'=>["上船失敗，檔案過大"]]);
-        }
         
+        if($request->file('ProtfolioProjecfileToUpload')!=null)
+        {
+            if($request->file('ProtfolioProjecfileToUpload')->getSize() > 24576*1024)
+            {
+                return response()->json(['errors'=>["上船失敗，檔案過大"]]);
+            }
+        }
        
         if($request->input("ProtfolioContentID")!=null) 
         {
@@ -82,7 +85,6 @@ class protfolio extends Controller
             ->get();
             if($request->file('ProtfolioProjecfileToUpload')==null)
             {
-                
                 $imgpath=str_replace("/img/ProtfolioProjec/","",$p[0]->ProtfolioContentImg);
             }
             else
