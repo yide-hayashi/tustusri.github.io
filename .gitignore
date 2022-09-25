@@ -53,3 +53,8 @@ dkms.conf
 storage/
 vendor/
 node_moduls/
+.env
+vendor/
+storage/
+public/
+resources/
