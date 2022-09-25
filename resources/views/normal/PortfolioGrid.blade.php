@@ -2,9 +2,9 @@
 <section class="page-section bg-light" id="portfolio">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">{{count($protfolioData)>0 ? "":$protfolioData[0]->ProtfolioText}}
+            <h2 class="section-heading text-uppercase">{{count($protfolioData)>0 ? $protfolioData[0]->ProtfolioText:""}}
             </h2>
-            <h3 class="section-subheading text-muted">{{count($protfolioData)>0 ? "":$protfolioData[0]->ProtfolioSub}}</h3>
+            <h3 class="section-subheading text-muted">{{count($protfolioData)>0 ? $protfolioData[0]->ProtfolioSub:""}}</h3>
         </div>
 
             <div class="row">
