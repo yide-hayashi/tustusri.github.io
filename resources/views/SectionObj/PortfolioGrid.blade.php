@@ -1,4 +1,5 @@
 
+<!-- 暫時沒用 現用目錄 normal/PortfolioPopup -->
 <section class="page-section bg-light" id="portfolio">
     <div class="container">
         <div class="text-center">
@@ -24,7 +25,7 @@
                         <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="/assets/img/addimg.jpg" alt="..." />
+                            <img class="img-fluid" src="/assets/img/addimg.jpg"/>
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">新增</div>
@@ -37,7 +38,7 @@
                         <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="{{$protfolioPojectsData[$i]->ProtfolioContentImg}}" alt="..." />
+                            <img class="img-fluid" src="{{$protfolioPojectsData[$i]->ProtfolioContentImg}}"  />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">{{$protfolioPojectsData[$i]->PopupName}}</div>
@@ -94,4 +95,3 @@ $.ajax({
 
 
   </script>
-        @includeIf("base.PortfolioPopup")

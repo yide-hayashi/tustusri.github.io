@@ -7,7 +7,7 @@
     <!-- Masthead-->
     @includeIf("SectionObj.masthead",["homedata"=>$homedata,"PopNameTag"=>"#".$PopNameTag[1]])
     <!-- Portfolio Grid-->
-     @includeIf("normal.PortfolioGrid")
+    @includeIf("normal.PortfolioGrid")
     <!-- About-->
     @includeIf("SectionObj.about")
     <!-- Team-->

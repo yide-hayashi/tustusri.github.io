@@ -21,6 +21,16 @@
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">{{$protfolioPojectsData[$i]->PopupName}}</div>
                             <div class="portfolio-caption-subheading text-muted">{{$protfolioPojectsData[$i]->PopupSubtext}}</div>
+                            <div class="category">
+                                <h5>
+                                @for($pi=0;$pi<count($CategoryData) ;$pi++)
+                                    @if ($CategoryData[$pi]->ProtfolioContentID==$protfolioPojectsData[$i]->ProtfolioContentID)
+                                    <div class="badge bg-info text-wrap categoryTextLine">{{$CategoryData[$pi]->PopupCategory}}</div>
+                                    @endif
+
+                                @endfor
+                                </h5>
+                            </div>
                         </div>
                     </div>
                 </div>

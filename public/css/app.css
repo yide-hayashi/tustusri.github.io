@@ -216,7 +216,9 @@
     top: -28%;
 }
 
-
+.categoryTextLine{
+    margin: inherit;
+}
 
 
 
