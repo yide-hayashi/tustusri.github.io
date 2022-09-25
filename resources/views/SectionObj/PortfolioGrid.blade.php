@@ -1,5 +1,4 @@
 
-<!-- 暫時沒用 現用目錄 normal/PortfolioPopup -->
 <section class="page-section bg-light" id="portfolio">
     <div class="container">
         <div class="text-center">
@@ -43,6 +42,16 @@
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">{{$protfolioPojectsData[$i]->PopupName}}</div>
                             <div class="portfolio-caption-subheading text-muted">{{$protfolioPojectsData[$i]->PopupSubtext}}</div>
+                            <div class="category">
+                                <h5>
+                                @for($pi=0;$pi<count($CategoryData) ;$pi++)
+                                    @if ($CategoryData[$pi]->ProtfolioContentID==$protfolioPojectsData[$i]->ProtfolioContentID)
+                                    <div class="badge bg-info text-wrap categoryTextLine">{{$CategoryData[$pi]->PopupCategory}}</div>
+                                    @endif
+
+                                @endfor
+                                </h5>
+                            </div>
                         </div>
                         @endif
 

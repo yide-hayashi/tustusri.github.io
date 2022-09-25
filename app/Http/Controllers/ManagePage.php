@@ -13,6 +13,7 @@ use App\Models\Contanct;
 use App\Models\ContanctSoft;
 use App\Http\Controllers\Api;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
 
 class ManagePage extends Controller
 {
@@ -24,8 +25,11 @@ class ManagePage extends Controller
             $PopNameTag=["PopupSetting","IndexContent","PortfoliotitleSetting","creatProjectPotup","creatAboutMePotup","contactPotup"];
             $navigationlinkTag=["#portfolio","#about","#team"];
             $menu=$homedata[0]->Pids->where("Pid",">","1")->select("PageName")->get()->toArray();
+
             $protfolioData=Protfolio::where("Pid","2")->get();
             $protfolioPojectsData=ProtfolioContent::where("Pid","2")->orderBy("updated_at","desc")->get();
+            $CategoryData=Category::orderBy("ProtfolioContentID", 'asc')->orderBy("PopupCategory", 'asc')->get();
+
             $AboutmeData=AboutmeTitle::where("Pid","3")->get();
             $HistoryDate=History::where("Pid","3")->get();
             $ContanctDate=Contanct::where("Pid","4")->get();
@@ -36,7 +40,10 @@ class ManagePage extends Controller
                 "protfolioData"=>count($protfolioData)>0? $protfolioData:"",
                 "PopNameTag"=>$PopNameTag,
                 "menu"=>$menu,
+
+                "CategoryData"=>$CategoryData,
                 "protfolioPojectsData"=>$protfolioPojectsData,
+
                 "AboutmeData"=>count($AboutmeData)>0? $AboutmeData:"",
                 "HistoryDate"=> $HistoryDate,
                 "ContanctDate"=>$ContanctDate
