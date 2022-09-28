@@ -24,17 +24,17 @@
         <script src="{{ asset('js/Protfiolt.js') }}" defer ></script>
         <script src="{{ asset('js/croppie.js') }}"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CBQ4ZZJEWT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-CBQ4ZZJEWT');
-</script>
         
     </head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CBQ4ZZJEWT"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-CBQ4ZZJEWT');
+    </script>
     <body id="page-top">
         @yield("IndexBody")
     </body>
