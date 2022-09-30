@@ -1,6 +1,6 @@
 @extends("base.layout")
 
-@section("title","mysite")
+@section("title","Mysite-Lin Yide's portfolio site")
 
 @section("IndexBody")
     @includeIf("SectionObj.navigation",["homedata"=>$homedata,"PopNameTag"=>"#".$PopNameTag[0],"menu"=>$menu])

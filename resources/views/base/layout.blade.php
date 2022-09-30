@@ -3,9 +3,10 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
+        <meta name="description" content="Lin Yide 的個人及專案介紹網站" />
+        <meta name="author" content="Lin Yide" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="google-site-verification" content="yTlJJUua_EhjUh3Cagxt-kQ4wZtIcrF7tHxl6km8o-c" />
         <title>@yield("title")</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
