@@ -144,7 +144,8 @@ class aboutmeController extends Controller
         $historyData=  History::where("HistoresID",$id)->get();
         if($request->file('fileToUpload')==null)
         {
-            $imgpath=str_replace("/img/aboutme/","",$historyData[0]->img);
+            //$imgpath=str_replace("/img/aboutme/","",$historyData[0]->img);
+            $imgpath=$historyData[0]->img;
         }
         else
         {
